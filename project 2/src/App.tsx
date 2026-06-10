@@ -3,7 +3,7 @@ import {
   MessageSquareIcon,
   BookOpenIcon,
   ClipboardListIcon,
-  ZapIcon,
+  BarChart3Icon,
   ClockIcon,
   EyeIcon,
   ChefHatIcon,
@@ -17,7 +17,7 @@ import { generateId, createNewChat } from './utils';
 import ChatView from './ChatView';
 import KnowledgeLibrary from './KnowledgeLibrary';
 import SOPBuilder from './SOPBuilder';
-import MissingProcesses from './MissingProcesses';
+import KnowledgeArchitecture from './KnowledgeArchitecture';
 import ReviewQueue from './ReviewQueue';
 import FranchisePreview from './FranchisePreview';
 
@@ -27,7 +27,7 @@ const NAV_ITEMS: { id: ActiveView; label: string; icon: React.ReactNode; section
   { id: 'chat',    label: 'Chat',               icon: <MessageSquareIcon size={14} />, section: 'admin' },
   { id: 'library', label: 'Knowledge Library',  icon: <BookOpenIcon size={14} />,     section: 'admin' },
   { id: 'sop',     label: 'SOP Builder',        icon: <ClipboardListIcon size={14} />, section: 'admin' },
-  { id: 'gaps',    label: 'Missing Processes',  icon: <ZapIcon size={14} />,          section: 'admin' },
+  { id: 'gaps',    label: 'Knowledge Architecture', icon: <BarChart3Icon size={14} />, section: 'admin' },
   { id: 'review',  label: 'Review Queue',       icon: <ClockIcon size={14} />,        section: 'admin' },
   { id: 'franchise', label: 'Franchise Preview', icon: <EyeIcon size={14} />,         section: 'franchise' },
 ];
@@ -167,7 +167,7 @@ export default function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [activeView, setActiveView] = useState<ActiveView>('chat');
 
-  // SOPBuilder state — used when navigating from MissingProcesses or ReviewQueue
+  // SOPBuilder state — used when navigating from KnowledgeArchitecture or ReviewQueue
   const [sopPrefill, setSopPrefill] = useState<SopPrefill | null>(null);
   const [sopEditDoc, setSopEditDoc] = useState<SopEditDoc | null>(null);
   const [sopKey, setSopKey] = useState(0);
@@ -289,7 +289,7 @@ export default function App() {
             />
           )}
           {activeView === 'gaps' && (
-            <MissingProcesses onCreateSOPDraft={handleCreateSOPDraft} />
+            <KnowledgeArchitecture onCreateSOPDraft={handleCreateSOPDraft} />
           )}
           {activeView === 'review' && (
             <ReviewQueue onEditDoc={handleEditDoc} />
