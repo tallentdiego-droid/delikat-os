@@ -24,11 +24,11 @@ import FranchisePreview from './FranchisePreview';
 type ActiveView = 'chat' | 'library' | 'sop' | 'gaps' | 'review' | 'franchise';
 
 const NAV_ITEMS: { id: ActiveView; label: string; icon: React.ReactNode; section?: 'admin' | 'franchise' }[] = [
+  { id: 'gaps',    label: 'Coverage',           icon: <BarChart3Icon size={14} />,    section: 'admin' },
+  { id: 'library', label: 'Library',            icon: <BookOpenIcon size={14} />,     section: 'admin' },
+  { id: 'sop',     label: 'Create SOP',         icon: <ClipboardListIcon size={14} />, section: 'admin' },
+  { id: 'review',  label: 'Reviews',            icon: <ClockIcon size={14} />,        section: 'admin' },
   { id: 'chat',    label: 'Chat',               icon: <MessageSquareIcon size={14} />, section: 'admin' },
-  { id: 'library', label: 'Knowledge Library',  icon: <BookOpenIcon size={14} />,     section: 'admin' },
-  { id: 'sop',     label: 'SOP Builder',        icon: <ClipboardListIcon size={14} />, section: 'admin' },
-  { id: 'gaps',    label: 'Knowledge Architecture', icon: <BarChart3Icon size={14} />, section: 'admin' },
-  { id: 'review',  label: 'Review Queue',       icon: <ClockIcon size={14} />,        section: 'admin' },
   { id: 'franchise', label: 'Franchise Preview', icon: <EyeIcon size={14} />,         section: 'franchise' },
 ];
 
@@ -165,7 +165,7 @@ export default function App() {
   const [activeChatId, setActiveChatId] = useState<string>(() => chats[0].id);
   const [isLoading, setIsLoading] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [activeView, setActiveView] = useState<ActiveView>('chat');
+  const [activeView, setActiveView] = useState<ActiveView>('gaps');
 
   // SOPBuilder state — used when navigating from KnowledgeArchitecture or ReviewQueue
   const [sopPrefill, setSopPrefill] = useState<SopPrefill | null>(null);
